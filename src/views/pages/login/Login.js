@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { Button, Modal } from 'react-bootstrap'
+
 import {
   CButton,
   CCard,
@@ -140,6 +142,7 @@ const Login = () => {
    { ...user })
     if (response.data.status === 'ok') {
       setLoading(false)
+      console.log("response signin",response)
       localStorage.setItem(
         'auth',
         JSON.stringify({
@@ -147,6 +150,7 @@ const Login = () => {
           token: response.data.token,
         }),
       )
+
       navigate('/dashboard')
       setTimeout(window.location.reload(), 8000)
     } else {
@@ -219,6 +223,20 @@ const Login = () => {
                     {errors.passwordError && (
                       <p className="text-center py-2 text-danger">{errors.passwordError}</p>
                     )}
+                       <Modal show={show} onHide={handleClose} className="p-4">
+                    <Modal.Header closeButton>
+                        <Modal.Title>Password Reset Request</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>Forgot your password? Don't worry, click 'Confirm' to reset your password</Modal.Body>
+                    <Modal.Footer>
+                        <Button variant="secondary" onClick={handleClose}>
+                            Cancle
+                        </Button>
+                        <Button variant="primary" onClick={ForgotMail}>
+                            Confirm
+                        </Button>
+                    </Modal.Footer>
+                </Modal>
                     <CRow>
                       <CCol xs={6}>
                         <CButton
@@ -232,7 +250,7 @@ const Login = () => {
                         </CButton>
                       </CCol>
                       <CCol xs={6} className="text-right">
-                        <CButton onClick={ForgotMail}  color="link" className="px-0">
+                        <CButton onClick={() => handleShow()} color="link" className="px-0">
                           Forgot password?
                         </CButton>
                       </CCol>
@@ -240,7 +258,7 @@ const Login = () => {
                   </CForm>
                 </CCardBody>
               </CCard>
-              <CCard className="text-white bg-primary py-5" style={{ width: '44%' }}>
+              {/* <CCard className="text-white bg-primary py-5" style={{ width: '44%' }}>
                 <CCardBody className="text-center">
                   <div>
                     <h2>Sign up</h2>
@@ -255,7 +273,7 @@ const Login = () => {
                     </Link>
                   </div>
                 </CCardBody>
-              </CCard>
+              </CCard> */}
             </CCardGroup>
           </CCol>
         </CRow>
