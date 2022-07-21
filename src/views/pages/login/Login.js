@@ -227,13 +227,23 @@ const Login = () => {
                     <Modal.Header closeButton>
                         <Modal.Title>Password Reset Request</Modal.Title>
                     </Modal.Header>
-                    <Modal.Body>Forgot your password? Don't worry, click 'Confirm' to reset your password</Modal.Body>
+                    <Modal.Body>                    
+                      <p>Password</p>
+                      <div>Current Password</div>
+                      <input style={{marginTop:"8px",width:"100%",borderRadius:"6px"}}></input>
+                    
+                      <div style={{marginTop:"20px"}}>New Password</div>
+                      <input style={{marginTop:"8px",width:"100%",borderRadius:"6px"}}></input>
+                      <div style={{marginTop:"20px"}}>Conferm New Password</div>
+                      <input style={{marginTop:"8px",width:"100%",borderRadius:"6px"}} ></input>
+                    
+                    </Modal.Body>
                     <Modal.Footer>
                         <Button variant="secondary" onClick={handleClose}>
                             Cancel
                         </Button>
                         <Button variant="primary" onClick={ForgotMail}>
-                            Confirm
+                            Save
                         </Button>
                     </Modal.Footer>
                 </Modal>
