@@ -230,7 +230,7 @@ const Login = () => {
                     <Modal.Body>Forgot your password? Don't worry, click 'Confirm' to reset your password</Modal.Body>
                     <Modal.Footer>
                         <Button variant="secondary" onClick={handleClose}>
-                            Cancle
+                            Cancel
                         </Button>
                         <Button variant="primary" onClick={ForgotMail}>
                             Confirm
